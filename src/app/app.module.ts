@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -42,20 +42,18 @@ import { CategoryComponent } from './category/category.component';
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:2500,
+      timeOut: 2000,
       positionClass: 'toast-top-center',
       closeButton: true
     })
-
-    
   ],
   providers: [
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthorizationService,
-      multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationService,
+      multi: true
     }
-  ],  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

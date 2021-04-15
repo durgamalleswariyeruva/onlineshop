@@ -9,7 +9,7 @@
   <div><h2>  Loading.... please wait</h2></div>
 </div>
 
-<div *ngIf="userid==null || cart.length<=0">
+<div *ngIf="userid==null || cart.length<=0 && spinning==1">
   <div clas="container">
     <h3 class=" text-info text-left mt-3 p-3 ml-5">My Cart({{username}})</h3>
 
@@ -28,7 +28,7 @@
           </div>
           <h6 class="display-6 text-center" >Missing Cart Items?</h6>
       <p class="text-center">Add products to card to see the card added Items</p>
-      <button class="btn d-block mx-auto text-light p-2" (click)="goTo()" style=" background-color: rgb(243, 131, 2); width: 25%;"><i class="fas fa-shopping-cart"></i>Click on Add to cart</button>
+      <button class="btn d-block mx-auto text-light p-2" (click)="goTo()" style=" background-color: rgb(243, 131, 2); "><i class="fas fa-shopping-cart"></i>Click on Add to cart</button>
   
       <hr>
       
@@ -89,8 +89,7 @@
 
             <p class="card-title p-2 ">Colour : <strong>{{p.colour}}</strong></p> 
 
-            <p class="card-title p-2" >Cost : <strong>{{(p.cost) /p.quantity | currency:"INR"}}</strong></p> 
-    
+            <p class="card-title p-2" >Cost : <strong>{{(p.cost)/(p.quantity)| currency:"INR"}}</strong></p> 
 
             <p class="card-title p-2" *ngIf="p.rate<4">Rating: <span class="bg-warning text-light px-1 rounded-pill ">{{p.rate}}<i class="fas fa-star fa-xs"></i></span></p>
             <p class="card-title p-2" *ngIf="p.rate>=4">Rating: <span class="bg-success text-light px-1 rounded-pill ">{{p.rate}}<i class="fas fa-star fa-xs"></i></span></p>
@@ -164,7 +163,7 @@
 
               <p class="card-title p-2  ">Colour : <strong>{{p.colour}}</strong></p> 
 
-             <p class="card-title p-2 " >Cost : <del>{{(p.cost)| currency:"INR"}}</del> <b class="ml-2"> {{0 | currency:"INR"}} </b></p> 
+              <p class="card-title p-2" >Cost : <strong>{{(p.cost)/(p.quantity) | currency:"INR"}}</strong></p> 
       
 
               <p class="card-title p-2 " *ngIf="p.rate<4">Rating: <span class="bg-warning text-light px-1 rounded-pill ">{{p.rate}}<i class="fas fa-star fa-xs"></i></span></p>

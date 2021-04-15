@@ -8,25 +8,24 @@ import { Observable } from 'rxjs';
 export class AuthorizationService implements HttpInterceptor {
 
   constructor() { }
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-    
-    //get token from localstorage
-      let token=localStorage.getItem("token");
-    
-     //if token is existed
-     if(token)
-     {
-       //add token to header of request object
-        let transformedReqObj=req.clone({
-          headers:req.headers.set("Authorization","Bearer "+token)
-        })
-       //forward req object to backend
-       return next.handle(transformedReqObj)
-     }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-     else{
-       //forward req object as it is to back end
-       return next.handle(req)
-     }
+    // get token from localstorage
+    const token = localStorage.getItem('token');
+
+    // if token is existed
+    if (token) {
+      // add token to header of request object
+      const transformedReqObj = req.clone({
+        headers: req.headers.set('Authorization', 'Bearer ' + token)
+      });
+      // forward req object to backend
+      return next.handle(transformedReqObj);
+    }
+
+    else {
+      // forward req object as it is to back end
+      return next.handle(req);
+    }
   }
 }

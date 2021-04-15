@@ -140,13 +140,13 @@ userApiObj.post("/wishlist",asyncHandler(async(req,res,next)=>{
 
 
 //retrive wishlist products
-userApiObj.get("/getWishlist/:userid",verifyToken,asyncHandler(async(req,res,next)=>{
+userApiObj.get('/getWishlist/:userid',verifyToken,asyncHandler(async(req,res,next)=>{
 
-    let wishlistCollectionObj = req.app.get("wishlistCollectionObj");
+    let wishlistCollectionObj = req.app.get('wishlistCollectionObj');
     let wishObj=req.body;
-    let products = await wishlistCollectionObj.find({userid:req.params.userid}).toArray();
+    let products = await wishlistCollectionObj.find({userid: req.params.userid}).toArray();
 
-    res.send({message:"success",productList:products})
+    res.send({message:'success', productList: products})
 }))
 
 
@@ -169,22 +169,22 @@ userApiObj.post("/deletewishproduct",asyncHandler(async(req,res,next)=>{
 }))
 
 //get all products
-userApiObj.get("/getcartitems/:userid",verifyToken,asyncHandler(async(req,res,next)=>{
+userApiObj.get('/getcartitems/:userid',verifyToken,asyncHandler(async(req,res,next)=>{
 
-    let cardCollectionObj = req.app.get("cardCollectionObj");
-    let adminProductCollectionObj = req.app.get("adminProductCollectionObj");
+    let cardCollectionObj = req.app.get('cardCollectionObj');
+    let adminProductCollectionObj = req.app.get('adminProductCollectionObj');
     let product = await adminProductCollectionObj.find().toArray();
 
-    let products = await cardCollectionObj.find({userid:req.params.userid}).toArray();
-    res.send({message:"success" ,product:products, product1:product})
+    let products = await cardCollectionObj.find({userid: req.params.userid}).toArray();
+    res.send({message: 'success' , product: products, product1: product})
 }))
 
-userApiObj.get("/getsize/:userid",verifyToken,asyncHandler(async(req,res,next)=>{
-    let cardCollectionObj = req.app.get("cardCollectionObj");
+userApiObj.get('/getsize/:userid',verifyToken,asyncHandler(async(req,res,next)=>{
+    let cardCollectionObj = req.app.get('cardCollectionObj');
     
-    let cart=await cardCollectionObj.find({userid:req.params.userid}).toArray();
-    let cartlength=cart.length;
-    res.send({cartsize:cartlength ,userCart:cart} );
+    let cart=await cardCollectionObj.find({userid: req.params.userid}).toArray();
+    let cartlength = cart.length;
+    res.send({cartsize: cartlength ,userCart: cart} );
     //console.log("the size is ",cart);
 }))
 

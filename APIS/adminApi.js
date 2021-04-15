@@ -39,12 +39,12 @@ adminApiObj.get("/allproducts",errorHandler(async(req,res,next)=>{
 //view cart
 
 adminApiObj.post("/viewitem",errorHandler(async(req,res,next)=>{
-    let adminProductCollectionObj=req.app.get("adminProductCollectionObj");
-    let Obj=req.body;
-    let viewItem=await adminProductCollectionObj.findOne({pname:Obj.pname});
-    if(viewItem!==null){
+    let adminProductCollectionObj = req.app.get("adminProductCollectionObj");
+    let Obj = req.body;
+    let viewItem = await adminProductCollectionObj.findOne({pname:Obj.pname});
+    if(viewItem){
         
-        res.send({message:true,pname:viewItem.pname});
+        res.send({message: true,pname: viewItem.pname});
     }
     
 }))
@@ -52,27 +52,26 @@ adminApiObj.post("/viewitem",errorHandler(async(req,res,next)=>{
 adminApiObj.get("/getitem/:pname",errorHandler(async(req,res,next)=>{
     
     let adminProductCollectionObj = req.app.get("adminProductCollectionObj");
-    let products = await adminProductCollectionObj.find({pname :req.params.pname}).toArray();
+    let products = await adminProductCollectionObj.find({pname : req.params.pname}).toArray();
     
-    res.send({message:products})
+    res.send({message: products})
 }))
 
 //get one products
 adminApiObj.get("/oneproduct/:pCategory",errorHandler(async(req,res,next)=>{
     
     let adminProductCollectionObj = req.app.get("adminProductCollectionObj");
-    let products = await adminProductCollectionObj.find({pCategory :req.params.pCategory}).toArray();
+    let products = await adminProductCollectionObj.find({pCategory : req.params.pCategory}).toArray();
     
-    res.send({message:products})
+    res.send({message: products})
 }))
 
 
 adminApiObj.post("/productdetails",upload.single('photo'),errorHandler(async (req,res,next)=>{
-    console.log("url is ",req.file.path);
     //get product collectionobject
 
-    let adminProductCollectionObj=req.app.get("adminProductCollectionObj");
-   let proObj=JSON.parse(req.body.proObj);
+    let adminProductCollectionObj = req.app.get("adminProductCollectionObj");
+   let proObj = JSON.parse(req.body.proObj);
     //add Imagelink
     proObj.ImgLink = req.file.path;
     let success=await adminProductCollectionObj.insertOne(proObj)

@@ -7,23 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class AdminserviceService {
 
-  constructor(private hc:HttpClient) { }
-  createproduct(proObj:any):Observable<any>{
-    
-    return this.hc.post("/admin/productdetails",proObj);
+  constructor(private hc: HttpClient) { }
+  createproduct(proObj): Observable<any> {
+    return this.hc.post('/admin/productdetails', proObj);
   }
-  getlist():Observable<any>{
-    return this.hc.get("/admin/allproducts")
+  getlist(): Observable<any> {
+    return this.hc.get('/admin/allproducts');
   }
-  deleteProduct(obj:any):Observable<any>{
-    
-    return this.hc.post("/admin/delete",obj);
+  deleteProduct(obj): Observable<any> {
+    return this.hc.post('/admin/delete', obj);
   }
-  getcurrentdata(pname:any):Observable<any>{
-    return this.hc.get("/admin/getproductdata/"+pname);
+  getcurrentdata(pname): Observable<any> {
+    return this.hc.get('/admin/getproductdata/' + pname);
   }
- 
-  editproduct(obj:any):Observable<any>{
-    return this.hc.put("/admin/updateproduct",obj)
+  editproduct(obj): Observable<any> {
+    return this.hc.put('/admin/updateproduct', obj);
   }
 }

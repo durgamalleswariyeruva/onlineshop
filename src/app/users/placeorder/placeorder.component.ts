@@ -10,71 +10,55 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PlaceorderComponent implements OnInit {
 
-  username: any;
-  order: any;
-  userid: any;
-  spinning: any=0;
-  constructor(private us:UserService,private router:Router,private ts:ToastrService) { }
+  username;
+  order;
+  userid;
+  constructor(private us: UserService, private router: Router, private ts: ToastrService) { }
 
   ngOnInit(): void {
-    this.username = localStorage.getItem('username') ;
-    this.userid = localStorage.getItem('userid') ;
-
+    this.username = localStorage.getItem('username');
+    this.userid = localStorage.getItem('userid');
     this.getCart();
   }
-
-  logout(){
-    this.router.navigateByUrl("/home");
+  logout(): any {
+    this.router.navigateByUrl('/home');
   }
-  
-  getCart(){
+  getCart(): any {
     this.us.getOrderItems(this.userid).subscribe(
       res => {
-        if(res['message'] === 'success')
+        if (res.message === 'success')
         {
-          this.spinning=1
-        this.order=res["productList"]
+          this.order = res.productList;
         }
-        else{
-          this.ts.warning(res["message"])
-          this.router.navigateByUrl("/login")
+        else {
+          this.ts.warning(res.message);
+          this.router.navigateByUrl('/login');
         }
       },
-      err=>{
-
+      err => {
         this.ts.warning('Something went wrong in adding to myorders');
-        
-        console.log(err)
+        console.log(err);
       }
-    )
+    );
   }
-  goTo(){
-    this.router.navigateByUrl("users/usercart")
+  goTo(): any {
+    this.router.navigateByUrl('/users/usercart');
   }
-
-
-  delete(n:number){
-    let obj5=this.order[n];
+  delete(n: number): any {
+    const obj5 = this.order[n];
     this.us.deleteOrderProduct(obj5).subscribe(
-      res=>{
-        if(res["message"]){
-
-          this.ts.success('Product removed from myorders') 
-          setTimeout(function(){
-            window.location.reload();
-         }, 1000);
-
-         // console.log("deleted successfully")
-
-         //window.location.reload()
-
+      res => {
+        if (res.message) {
+          this.ts.success('Product removed from myorders') ;
+          setTimeout(() => {
+             window.location.reload(); }, 1000);
         }
       },
-      err=>{
+      err => {
         this.ts.warning('Something went wrong in product deletion');
         console.log(err);
       }
-    )
+    );
 
   }
 

@@ -14,22 +14,20 @@ import { UsersModule } from './users/users.module';
 
 const routes: Routes = [
   { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
-
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  {path:"home", component:HomeComponent},
-  {path:"userdashboard",component:UserdashboardComponent},
-  {path:"footer", component:FooterComponent},
-  {path:"logout",component:LogoutComponent},
-  {path:"reset",component:ResetComponent},
-  {path:"category",component:CategoryComponent},
-  {path:"", redirectTo:"/home", pathMatch:"full"},
- { path: 'admindashboard', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'userdashboard', component: UserdashboardComponent },
+  { path: 'footer', component: FooterComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'reset', component: ResetComponent },
+  { path: 'category', component: CategoryComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'admindashboard', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
-        
 })
 export class AppRoutingModule { }

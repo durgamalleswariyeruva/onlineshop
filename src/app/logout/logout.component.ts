@@ -9,10 +9,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-  username:any
-  constructor(private us:UserService,private rt:Router,private ts:ToastrService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-  
+
 }

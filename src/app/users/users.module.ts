@@ -14,7 +14,7 @@ import { PlaceorderComponent } from './placeorder/placeorder.component';
 
 
 @NgModule({
-  declarations: [UsersComponent, UsercartComponent, UserdashboardComponent, ViewcartComponent, WishlistComponent,PlaceorderComponent],
+  declarations: [UsersComponent, UsercartComponent, UserdashboardComponent, ViewcartComponent, WishlistComponent, PlaceorderComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
@@ -23,10 +23,9 @@ import { PlaceorderComponent } from './placeorder/placeorder.component';
   ],
   providers: [
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthorizationService,
-      multi:true
-    }
-  ],  
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationService,
+      multi: true  },
+  ]
 })
 export class UsersModule { }

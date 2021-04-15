@@ -9,15 +9,12 @@ import { UsersComponent } from './users.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
-const routes: Routes = [{ path:'', component: UsersComponent},
-  {path:"usercart", component: UsercartComponent,canActivate :[RouteGuard]},
-  {path:"userdashboard", component: UserdashboardComponent,canActivate :[RouteGuard]},
-  {path:"viewcart", component:ViewcartComponent},
-  {path:"wishlist", component:WishlistComponent,canActivate :[RouteGuard]},
-  {path:"placeorder",component:PlaceorderComponent,canActivate :[RouteGuard]}
-
-  
-
+const routes: Routes = [{ path: '', component: UsersComponent},
+  {path: 'usercart', component: UsercartComponent, canActivate: [RouteGuard]},
+  {path: 'userdashboard', component: UserdashboardComponent, canActivate: [RouteGuard]},
+  {path: 'viewcart', component: ViewcartComponent},
+  {path: 'wishlist', component: WishlistComponent, canActivate: [RouteGuard]},
+  {path: 'placeorder', component: PlaceorderComponent, canActivate: [RouteGuard]}
 ];
 
 @NgModule({
