@@ -28,7 +28,7 @@ var upload = multer({ storage: storage });
 //extract body of req obj
 adminApiObj.use(exp.json())
 
-adminApiObj.get("/allproducts",verifyToken,errorHandler(async(req,res,next)=>{
+adminApiObj.get("/allproducts",errorHandler(async(req,res,next)=>{
 
     let adminProductCollectionObj = req.app.get("adminProductCollectionObj");
     let products = await adminProductCollectionObj.find().toArray();
