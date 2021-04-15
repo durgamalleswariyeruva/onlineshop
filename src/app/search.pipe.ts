@@ -9,10 +9,14 @@ export class SearchPipe implements PipeTransform {
     if(!searchTerm){
       return products;
     }
-    else 
-    {
-    
-      return products.filter(obj=>obj.pname.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1)
+    else {
+      let product = products.filter(obj => obj.pname.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+      if (product.length !== 0) {
+        return product;
+      }
+      else {
+        this.ts.warning('No Search Results found for your match');
+      } return products.filter(obj=>obj.pname.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1)
       
     } 
 }
