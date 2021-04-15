@@ -89,7 +89,7 @@
 
             <p class="card-title p-2 ">Colour : <strong>{{p.colour}}</strong></p> 
 
-            <p class="card-title p-2" >Cost : <strong>{{(p.cost)| currency:"INR"}}</strong></p> 
+            <p class="card-title p-2" >Cost : <strong>{{(p.cost) /p.quantity | currency:"INR"}}</strong></p> 
     
 
             <p class="card-title p-2" *ngIf="p.rate<4">Rating: <span class="bg-warning text-light px-1 rounded-pill ">{{p.rate}}<i class="fas fa-star fa-xs"></i></span></p>
